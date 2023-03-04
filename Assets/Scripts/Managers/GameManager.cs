@@ -7,8 +7,10 @@ public class GameManager : MonoBehaviour
 	public const string DefaultName = "Manager";
 
 	private static GameManager instance;
+	private static DataManager dataManager;
 
 	public static GameManager Instance { get { return instance; } }
+	public static DataManager Data { get { return dataManager; } }
 
 	private void Awake()
 	{
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
 
 	private void InitManagers()
 	{
-		// TODO : 
+		GameObject dataObject = new GameObject() { name = "DataManager" };
+		dataManager = gameObject.AddComponent<DataManager>();
 	}
 }

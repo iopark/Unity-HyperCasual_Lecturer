@@ -8,8 +8,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 	[SerializeField]
-	private float moveSpeed;
-	[SerializeField]
 	private float jumpSpeed;
 
 	private new Rigidbody2D rigidbody;
@@ -39,6 +37,6 @@ public class PlayerController : MonoBehaviour
 
 	private void Rotate()
 	{
-		transform.right = rigidbody.velocity + Vector2.right * moveSpeed;
+		transform.right = rigidbody.velocity + Vector2.right * GameManager.Data.MoveSpeed;
 	}
 }
