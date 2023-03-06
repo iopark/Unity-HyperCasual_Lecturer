@@ -25,6 +25,7 @@ public class GameSceneFlow : MonoBehaviour
 		{
 			case State.Ready:
 				OnReadyed?.Invoke();
+				GameManager.Data.CurScore = 0;
 				break;
 			case State.Play:
 				OnPlayed?.Invoke();

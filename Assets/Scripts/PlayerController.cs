@@ -14,7 +14,11 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private LayerMask ObstacleLayer;
 	[SerializeField]
+	private LayerMask ScoreLayer;
+	[SerializeField]
 	private UnityEvent OnDied;
+	[SerializeField]
+	private UnityEvent OnScored;
 
 	private new Rigidbody2D rigidbody;
 	private Animator animator;
@@ -34,6 +38,15 @@ public class PlayerController : MonoBehaviour
 	{
 		if ((1 << collision.gameObject.layer & ObstacleLayer) != 0)
 			OnDied?.Invoke();
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if ((1 << collision.gameObject.layer & ScoreLayer) != 0)
+		{
+			OnScored?.Invoke();
+			GameManager.Data.CurScore++;
+		}
 	}
 
 	private void OnJump(InputValue value)
