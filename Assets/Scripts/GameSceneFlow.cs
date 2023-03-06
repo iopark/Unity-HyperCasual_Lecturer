@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameSceneFlow : MonoBehaviour
 {
@@ -37,6 +38,16 @@ public class GameSceneFlow : MonoBehaviour
 	public void Play()
 	{
 		ChangeState(State.Play);
+	}
+
+	public void GameOver()
+	{
+		ChangeState(State.GameOver);
+	}
+
+	public void Ok()
+	{
+		SceneManager.LoadScene("GameScene");
 	}
 
 	[Serializable]

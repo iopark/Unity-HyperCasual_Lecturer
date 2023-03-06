@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -9,6 +10,11 @@ public class PlayerController : MonoBehaviour
 {
 	[SerializeField]
 	private float jumpSpeed;
+
+	[SerializeField]
+	private LayerMask ObstacleLayer;
+	[SerializeField]
+	private UnityEvent OnDied;
 
 	private new Rigidbody2D rigidbody;
 	private Animator animator;
@@ -22,6 +28,12 @@ public class PlayerController : MonoBehaviour
 	private void Update()
 	{
 		Rotate();
+	}
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if ((1 << collision.gameObject.layer & ObstacleLayer) != 0)
+			OnDied?.Invoke();
 	}
 
 	private void OnJump(InputValue value)
