@@ -48,7 +48,7 @@ public class GameSceneFlow : MonoBehaviour
 
 	public void Ok()
 	{
-		SceneManager.LoadScene("GameScene");
+		SceneManager.LoadScene("TitleScene");
 	}
 
 	[Serializable]
